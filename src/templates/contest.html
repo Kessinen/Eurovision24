@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block header %}<p>{{ round_data.round_name }}</p>{% endblock %}
+{% block content %}
+{{ round_data.part_data }}
+{% for participant in round_data.partisipants %}
+<div class="participant">
+    <a href="/participant/{{ participant.country|lower }}" >
+        <div class="participant_frame">
+            <div class="participant_flag">
+                <img src="{{ participant.country_img }}" alt="{{ participant.country }}">
+            </div>
+            <div class="participant_info">
+                <div class="participant_name">
+                    {{ participant.name|title }}
+                </div>
+                <div class="participant_song">
+                    {{ participant.song|title }}
+                </div>
+            </div>
+            <div class="participant_score">
+                {{ participant.mean_score|default(0.00) }}
+            </div>
+        </div>
+    </a>
+</div>
+{% endfor %}
+{% endblock %}

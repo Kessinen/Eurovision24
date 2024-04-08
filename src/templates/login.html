@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for user in users %}
+<a href="/login/{{ user.id }}">{{ user.username }}</a><br>
+{% endfor %}
+{% endblock %}

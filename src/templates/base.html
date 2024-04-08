@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/main.css') }}">
+    <title>Euroviisut 2024</title>
+</head>
+<body>
+    <nav><a href="{{ url_for('logout') }}">Logout</a></nav>
+    {% block header %}
+    <p>Euroviisut 2024</p>
+    {% endblock %}
+    {% block content %}{% endblock %}
+</body>
+</html>
