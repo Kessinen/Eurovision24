@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Pässi",
+        "profile_picture": "temp.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Jensku",
+        "profile_picture": "temp2.jpg"
+    }
+]
