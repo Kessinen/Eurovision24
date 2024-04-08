@@ -4,7 +4,7 @@
 {{ round_data.part_data }}
 {% for participant in round_data.partisipants %}
 <div class="participant">
-    <a href="/participant/{{ participant.country|lower }}" >
+    <a href="/participant/{{ participant.id }}" >
         <div class="participant_frame">
             <div class="participant_flag">
                 <img src="{{ participant.country_img }}" alt="{{ participant.country }}">

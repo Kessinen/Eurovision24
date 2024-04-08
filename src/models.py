@@ -10,7 +10,8 @@ class Users(SQLModel, table=True):
 class Scores(SQLModel, table=True):
     id: int = Field(default=None, primary_key=True)
     user_id: int = Field(default=None, foreign_key="users.id")
-    country: str
-    song: float
-    costume: float
-    show: float
+    song_id: int
+    round_number: int
+    score_costume: int
+    score_show: int
+    score_song: int
