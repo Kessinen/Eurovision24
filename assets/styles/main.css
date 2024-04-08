@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.participant {
+    background-color: lightblue;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 60rem;
+    margin: 1rem auto;
+}
+
+.participant_frame {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.participant_flag {
+    display: flex;
+    justify-content: center;
+    max-width: 8rem;
+}
+
+.participant_flag img {
+    max-height: 4rem;
+    padding: 0 2rem;
+}
+
+.participant_info {
+    flex-grow: 1;
+}
+
+.participant_name {
+    font-weight: bold;
+}
+
+.participant_song {
+    font-style: italic;
+}
+
+.participant_score {
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+}
