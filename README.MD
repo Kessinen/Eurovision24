@@ -28,6 +28,6 @@ Have fun, and let's make this a memorable Eurovision experience!
 - [ ] Switch to use Python SQLModel package
 
 ## "TODOS (possibly)"
-- [ ] Switch to MongDB
+- [ ] Switch to MongoDB
 - [ ] Add Javascript
 
