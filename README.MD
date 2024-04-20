@@ -13,18 +13,23 @@ In this project, you'll find the code for the web application that allows us to 
 
 This project is currently under active development, which means that the codebase, documentation, and installation instructions are subject to change at any time without notice. As such, the following installation instructions may already be obsolete or incomplete.
 
-## Get started by:
-1. Cloning the repository
-2. Installing dependencies (listed in `requirements.txt`)
-3. Running the FastAPI app using `uvicorn`
-4. Reviewing the songs and sharing your thoughts!
+## Installation instructions:
+
+### Docker compose
+
+1. Edit docker-compose.yml to your needs
+2. Run `docker-compose up -d`
+
+### Manual installation
+
+- Coming soon
 
 Have fun, and let's make this a memorable Eurovision experience!
 
 ## Roadmap
 ### 1.0
 - [ ] Layout and composition
-- [ ] Docker implementation
+- [x] Docker implementation
 ### 1.5
 - [ ] Switch to use Python SQLModel package
 

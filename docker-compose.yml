@@ -1,0 +1,11 @@
+version: '3'
+services:
+  eurovision-24:
+    build: .
+    command: uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8089:8000"
+    environment:
+      - DATABASE_URL=sqlite:///app.db
+    volumes:
+      - ./data/:/app/database

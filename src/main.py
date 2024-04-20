@@ -6,6 +6,7 @@ from fastapi.responses import RedirectResponse
 from dotenv import load_dotenv
 from rich import print
 import os
+import pathlib
 
 from models import Users, Scores, Participants
 from db import get_scores, set_scores, get_mean_score, populate_db
@@ -18,7 +19,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # SQL Model
 
-engine = create_engine("sqlite:///data.sqlite")
+if not pathlib.Path("database").exists():
+    pathlib.Path("database").mkdir()
+engine = create_engine("sqlite:///database/data.sqlite")
 SQLModel.metadata.create_all(engine)
 populate_db()
 
