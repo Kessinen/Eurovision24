@@ -11,8 +11,7 @@ In this project, you'll find the code for the web application that allows us to 
 
 **UNDER DEVELOPMENT - SUBJECT TO CHANGE**
 
-This project is currently under active development, which means that the codebase, documentation, and installation instructions are subject to change at any
-time without notice. As such, the following installation instructions may already be obsolete or incomplete.
+This project is currently under active development, which means that the codebase, documentation, and installation instructions are subject to change at any time without notice. As such, the following installation instructions may already be obsolete or incomplete.
 
 ## Get started by:
 1. Cloning the repository
@@ -22,5 +21,13 @@ time without notice. As such, the following installation instructions may alread
 
 Have fun, and let's make this a memorable Eurovision experience!
 
-## TODO:
-- [ ] Layout and compostion
+## Roadmap
+### 1.0
+- [ ] Layout and composition
+### 1.5
+- [ ] Switch to use Python SQLModel package
+
+## "TODOS (possibly)"
+- [ ] Switch to MongDB
+- [ ] Add Javascript
+
