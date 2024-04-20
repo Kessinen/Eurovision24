@@ -7,9 +7,8 @@ from dotenv import load_dotenv
 from rich import print
 import os
 
-from models import Users, Scores
-from participants import get_all_participants, get_participant
-from db import get_scores, set_scores, get_mean_score
+from models import Users, Scores, Participants
+from db import get_scores, set_scores, get_mean_score, populate_db
 
 app = FastAPI()
 load_dotenv()
@@ -21,6 +20,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 engine = create_engine("sqlite:///data.sqlite")
 SQLModel.metadata.create_all(engine)
+populate_db()
 
 # Routes
 
@@ -37,6 +37,7 @@ async def login(request: Request, response: Response):
     users = []
     with Session(engine) as session:
         users = session.query(Users).all()
+    print(users)
     return templates.TemplateResponse(
         "login.html", {"request": request, "users": users}
     )
@@ -51,19 +52,27 @@ async def loginUser(request: Request, response: Response, id: str = None):
 
 @app.get("/contest/{round_number}")
 async def contest(request: Request, response: Response, round_number: int = 1):
+    
+    # Check if user is logged in
     if request.cookies.get("user") is None:
         return RedirectResponse("/login")
-    participant_list = get_all_participants(round_number)
-    for participant in participant_list:
-        participant["mean_score"] = get_mean_score(
-            int(request.cookies.get("user")), round_number, participant["id"]
-        )
-
+    
+    # Initialize variables
     round_names = {1: "1. Semifinaali", 2: "2. Semifinaali", 3: "Finaali"}
     round_data = {
         "round_name": round_names[round_number],
-        "partisipants": participant_list,
+        "partisipants": [],
     }
+
+    # Get scores
+    with Session(engine) as session:
+        participant_list = session.query(Participants).filter(Participants.round == round_number).order_by(Participants.turn).all()
+
+        for participant in participant_list:
+            participant_data = participant.dict()
+            participant_data["mean_score"] = get_mean_score(int(request.cookies.get("user")), round_number, participant.id)
+            round_data["partisipants"].append(participant_data)
+
     resp = templates.TemplateResponse(
         "contest.html", {"request": request, "round_data": round_data}
     )
@@ -80,7 +89,9 @@ def participant(request: Request, response: Response, id: int = None):
     scores = get_scores(
         int(request.cookies.get("user")), int(request.cookies.get("round")), int(id)
     )
-    participant_info = get_participant(int(id))
+    with Session(engine) as session:
+        participant_info = session.query(Participants).filter(Participants.id == id).first()
+    #participant_info = get_participant(int(id))
     return templates.TemplateResponse(
         "participant.html",
         {
@@ -105,7 +116,12 @@ def participant(
         return RedirectResponse("/login")
     if request.cookies.get("round") is None:
         return RedirectResponse("/")
-    participant_info = get_participant(int(id))
+    with Session(engine) as session:
+        participant_info = session.query(Participants).filter(Participants.id == id).first()
+
+    if participant_info is None:
+        return RedirectResponse("/")
+
     set_scores(
         int(request.cookies.get("user")),
         int(request.cookies.get("round")),

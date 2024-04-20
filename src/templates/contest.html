@@ -3,11 +3,11 @@
 {% block content %}
 {{ round_data.part_data }}
 {% for participant in round_data.partisipants %}
-<div class="participant">
+<div class="participant" style="background-image: url('{{ participant.country_img }}');">
     <a href="/participant/{{ participant.id }}" >
         <div class="participant_frame">
-            <div class="participant_flag">
-                <img src="{{ participant.country_img }}" alt="{{ participant.country }}">
+            <div class="participant_turn">
+                {{ participant.turn }}
             </div>
             <div class="participant_info">
                 <div class="participant_name">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="participant_score">
-                {{ participant.mean_score|default(0.00) }}
+                {{ participant.mean_score|default(0.00)|round(1) }}
             </div>
         </div>
     </a>

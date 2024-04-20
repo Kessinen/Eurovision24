@@ -24,6 +24,7 @@ Have fun, and let's make this a memorable Eurovision experience!
 ## Roadmap
 ### 1.0
 - [ ] Layout and composition
+- [ ] Docker implementation
 ### 1.5
 - [ ] Switch to use Python SQLModel package
 
