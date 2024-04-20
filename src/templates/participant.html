@@ -1,19 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-{{ participant_info.country|title }}
-{{ participant_info.name|title }}
-{{ participant_info.song|title }}
-<img src="{{ participant_info.img }}" alt="">
-<form action="/participant/{{ participant_info.id }}" method="post">
-    <label for="score_song">Melodia</label>
-    <input type="number" name="score_song" value="{{ scores.score_song | default(0) }}" min="4" max="10" step="1" placeholder="Melodia">
-    <label for="score_costume">Puku</label>
-    <input type="number" name="score_costume" value="{{ scores.score_costume | default(0) }}" min="4" max="10" step="1" placeholder="Puku">
-    <label for="score_show">Show</label>
-    <input type="number" name="score_show" value="{{ scores.score_show | default(0) }}" min="4" max="10" step="1" placeholder="Show">
-    <input type="submit" value="Submit">
-</form>
-<p>Artistin euroviisusivut ja lyriikat: <a href="{{ participant_info.url }}" target="_blank">täältä.</a></p>
-<button onclick="window.location.href='/contest/{{ round }}';">Back</button>
+<div class="section participant-card">
+    <div class="participant-info">
+        <div class="participant-img">
+            <img src="{{ participant_info.img }}" alt="">
+        </div>
+        <div class="participant-info-country">
+            {{ participant_info.country|title }}
+        </div>
+        <div class="participant-info-song">
+            <p>{{ participant_info.name|title }}</p>
+            <p>{{ participant_info.song|title }}</p>
+        </div>
+    </div>
+    <div class="participant-scores">
+        <form action="/participant/{{ participant_info.id }}" method="post">
+            <label for="score_song">Melodia</label>
+            <input type="number" name="score_song" value="{{ scores.score_song | default(0) }}" min="4" max="10"
+                step="1" placeholder="Melodia">
+            <label for="score_costume">Puku</label>
+            <input type="number" name="score_costume" value="{{ scores.score_costume | default(0) }}" min="4" max="10"
+                step="1" placeholder="Puku">
+            <label for="score_show">Show</label>
+            <input type="number" name="score_show" value="{{ scores.score_show | default(0) }}" min="4" max="10"
+                step="1" placeholder="Show">
+            <input type="submit" value="Submit" class="button is-primary">
+        </form>
+    </div>
+    <div class="participant-extra">
+        <p>Artistin euroviisusivut ja lyriikat: <a href="{{ participant_info.url }}" target="_blank">täältä.</a></p>
+        <button onclick="window.location.href='/contest/{{ round }}';" class="button is-dark">Back</button>
+    </div>
+</div>
 {% endblock %}
