@@ -9,6 +9,8 @@ The idea is simple: as we watch the contest together, we'll score each song in t
 
 In this project, you'll find the code for the web application that allows us to input our scores and display them in a user-friendly format. We hope this becomes an enjoyable tradition for many years to come!
 
+Since this is intended for private use within the family, some aspects like strong user session handling, password hashing, salting etc. will not be implemented.
+
 **UNDER DEVELOPMENT - SUBJECT TO CHANGE**
 
 This project is currently under active development, which means that the codebase, documentation, and installation instructions are subject to change at any time without notice. As such, the following installation instructions may already be obsolete or incomplete.
@@ -26,14 +28,21 @@ This project is currently under active development, which means that the codebas
 
 Have fun, and let's make this a memorable Eurovision experience!
 
-## Roadmap
-### 1.0
-- [ ] Layout and composition
-- [x] Docker implementation
-### 1.5
-- [ ] Switch to use Python SQLModel package
+## Timetable (deadlines)
 
-## "TODOS (possibly)"
+- 2024-04-24: Admin-panel
+  - [ ] Add users
+  - [ ] Remove users (May not be implemented.)
+  - [ ] Reset password
+- 2024-05-04: Layout
+  - [ ] Login page
+  - [ ] Main page (participant list)
+  - [ ] Review page
+  - [ ] Admin page (low priority)
+- 2024-04-06: Last polish & cleanup
+- 2024-04-07 18:00: Testrun
+- 2024-05-07 22:00: Eurovision '24 Gamenight!
+
+## "May or may not be implemented" features
 - [ ] Switch to MongoDB
 - [ ] Add Javascript
-
